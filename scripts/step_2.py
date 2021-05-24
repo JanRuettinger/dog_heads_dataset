@@ -1,9 +1,8 @@
-import dlib, cv2, os
+import cv2, os
 from ast import literal_eval
 from imutils import face_utils
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 import pandas as pd
 
 df_train = pd.read_csv("../csv_files/preprocessing_train.csv", index_col = 0)
@@ -11,15 +10,15 @@ df_val = pd.read_csv("../csv_files/preprocessing_val.csv", index_col = 0)
 
 df_all = pd.concat([df_train, df_val])
 
-filter_1 = 0
-filter_2 = 0
-filter_3 = 0
+num_imgs_after_filter_1 = 0
+num_imgs_after_filter_2 = 0
+num_imgs_after_filter_3 = 0
 valid_imgs = 0
 
-image_output_dir = "/scratch/local/ssd/janhr/data/dogs_cropped/all/"
-image_input_dir = "/scratch/local/ssd/janhr/data/tsinghua_dogs_high_res_cropped/train/"
+image_output_dir = "/scratch/shared/beegfs/janhr/data/unsup3d_extended/tsinghua_dogs_high_res_cropped/all/"
+image_input_dir = "/scratch/shared/beegfs/janhr/data/unsup3d_extended/tsinghua_dogs_high_res_cropped/train/"
 
-for index, row in df_all[510:4000].iterrows():
+for index, row in df_all.iterrows():
     img_name = row["img_name"]
     img_path = image_input_dir + img_name
     img = cv2.imread(img_path)
@@ -35,7 +34,7 @@ for index, row in df_all[510:4000].iterrows():
     # 2. filter check if head and landmarks were detected
     if row["bb"] != True or row["lm"] != True:
         continue
-    num_imgs_after_filter_3 += 1
+    num_imgs_after_filter_2 += 1
 
     # 3. noise right or left of eye -> side view -> filter out
     right_eye = literal_eval(row["lm_02"])
