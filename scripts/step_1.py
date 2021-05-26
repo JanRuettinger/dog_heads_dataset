@@ -56,7 +56,7 @@ for i in train_file_list:
     t = source_path / t
     train_files.append(t)
     
-print(f"Found {len(train_files)} images.")
+print(f"Found train {len(train_files)} images.")
     
 process_files(train_files, source_path, destination_path, annotation_path)
 
@@ -72,6 +72,6 @@ for i in val_file_list:
     t = source_path / t
     val_files.append(t)
     
-print(f"Found {len(val_files)} images.")
+print(f"Found val {len(val_files)} images.")
     
 process_files(val_files, source_path, destination_path, annotation_path)
