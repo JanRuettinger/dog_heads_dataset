@@ -5,9 +5,9 @@ import pandas as pd
 from pathlib import Path
 from shutil import copyfile
 
-cropped_imgs_path = Path("/scratch/local/ssd/janhr/data/dogs_cropped/all/")
-train_dir_path = Path("/scratch/local/ssd/janhr/data/dogs_cropped/train")
-val_dir_path = Path("/scratch/local/ssd/janhr/data/dogs_cropped/val")
+cropped_imgs_path = Path("/scratch/shared/beegfs/janhr/data/unsup3d_extended/dogs_cropped/all")
+train_dir_path = Path("/scratch/shared/beegfs/janhr/data/unsup3d_extended/dogs_cropped/train")
+val_dir_path = Path("/scratch/shared/beegfs/janhr/data/unsup3d_extended/dogs_cropped/val")
 train_validation_ratio = 0.1
 
 # Create train and val dir

@@ -15,8 +15,8 @@ num_imgs_after_filter_2 = 0
 num_imgs_after_filter_3 = 0
 valid_imgs = 0
 
-image_output_dir = Path("/scratch/local/ssd/janhr/data/dogs_cropped/all/")
-image_input_dir = Path("/scratch/local/ssd/janhr/data/tsinghua_dogs_high_res_cropped/all")
+image_output_dir = Path("/scratch/shared/beegfs/janhr/data/unsup3d_extended/dogs_cropped/all")
+image_input_dir = Path("/scratch/shared/beegfs/janhr/data/unsup3d_extended/tsinghua_dogs_high_res_cropped/all")
 image_output_dir.mkdir(parents=True, exist_ok=True)
 
 for index, row in df_all.iterrows():
