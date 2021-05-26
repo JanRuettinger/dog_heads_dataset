@@ -16,3 +16,8 @@ The dataset consits of ~22k images of predominately front facing dog heads with 
 
 
 ### Example images
+![image_1](./examples/n140142.jpg)
+![image_2](./examples/n100004.jpg)
+![image_3](./examples/n100005.jpg)
+![image_4](./examples/n120099.jpg)
+![image_5](./examples/n135050.jpg)
