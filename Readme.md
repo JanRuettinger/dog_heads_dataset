@@ -1,5 +1,5 @@
 # Dog Dataset
-The dataset consits of ~22k images of predominately front facing dog heads with a size of 256x256. It was derived from the [Tsinghua Dog Dataset](https://cg.cs.tsinghua.edu.cn/ThuDogs/).
+The dataset consits of ~22k images of predominately front facing dog heads with a size of 256x256 pixels. It was derived from the [Tsinghua Dog Dataset](https://cg.cs.tsinghua.edu.cn/ThuDogs/).
 
 ## How can I use the dataset?
 1. Download the Tsinghua Dog Dataset [here](https://cg.cs.tsinghua.edu.cn/ThuDogs/).
