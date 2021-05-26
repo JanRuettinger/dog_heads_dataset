@@ -1,22 +1,15 @@
 # Dog Dataset
+The dataset consits of ~22k images of predominately front facing dog heads with a size of 256x256. It was derived from the [Tsinghua Dog Dataset](https://cg.cs.tsinghua.edu.cn/ThuDogs/).
 
-## Initial purpose of the dataset
-
-## Numbers of the dataset
-
-## How can I download the dataset
+## How can I use the dataset?
+1. Download the Tsinghua Dog Dataset [here](https://cg.cs.tsinghua.edu.cn/ThuDogs/).
+2. Run the preprocessing steps 1-3 (either python scripts or jupyter notebooks).
 
 ### Install libs for preprocessing
-`conda create --name <envname> --file env.yml`
+`pip install -r requirements.txt`
 
-### Download tsinghua dataset
-You can download the original Tsinghua Dogs Dataset here: https://cg.cs.tsinghua.edu.cn/ThuDogs/
 
-### Run preprocessing step 1
-Run notebook `step_1.ipynb` to crop images according to bounding boxes provided by Tsinghua Dogs Dataset creators
-
-### Run preprocessing step 2 (uses provided notebook)
-Run notebook `step_2.ipynb` to refine the crops and filter out side views
-
-### Train, validation & test split
-Run the notebook `step_3.ipynb` to split the data into train and validation sets
+### Preprocessing details
+- During **step 1** images are cropped according to bounding boxes provided by Tsinghua Dogs Dataset creators.
+- During **step 2** a second dog face detector is used to extract more accurate bounding boxes and key frames (eyes, nose, forehead). Both are used to refine the final cropped image. In addition, small images and images showing a dog from the side are filtered out.
+- During **step 3** the dataset is split into a train and validation set.
