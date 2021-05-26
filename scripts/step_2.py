@@ -4,29 +4,30 @@ from imutils import face_utils
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from pathlib import Path
 
-df_train = pd.read_csv("../csv_files/preprocessing_train.csv", index_col = 0)
-df_val = pd.read_csv("../csv_files/preprocessing_val.csv", index_col = 0)
+df_all = pd.read_csv("../csv_files/preprocessing_img_data.csv", index_col = 0)
 
-df_all = pd.concat([df_train, df_val])
+print(f"A bounding box could only be detected for {len(df_all[df_all['bb'] == True])} images.")
 
 num_imgs_after_filter_1 = 0
 num_imgs_after_filter_2 = 0
 num_imgs_after_filter_3 = 0
 valid_imgs = 0
 
-image_output_dir = "/scratch/shared/beegfs/janhr/data/unsup3d_extended/tsinghua_dogs_high_res_cropped/all/"
-image_input_dir = "/scratch/shared/beegfs/janhr/data/unsup3d_extended/tsinghua_dogs_high_res_cropped/train/"
+image_output_dir = Path("/scratch/local/ssd/janhr/data/dogs_cropped/all/")
+image_input_dir = Path("/scratch/local/ssd/janhr/data/tsinghua_dogs_high_res_cropped/all")
+image_output_dir.mkdir(parents=True, exist_ok=True)
 
 for index, row in df_all.iterrows():
     img_name = row["img_name"]
-    img_path = image_input_dir + img_name
-    img = cv2.imread(img_path)
+    img_path = image_input_dir / img_name
+    img = cv2.imread(str(img_path))
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     # 1. filter: pixel size
     num_pixels = row["num_pixels_initial_crop"]
-    if num_pixels < 250*250:
+    if num_pixels < 256*256:
         continue
     num_imgs_after_filter_1 += 1
         
@@ -140,20 +141,20 @@ for index, row in df_all.iterrows():
 #         cv2.putText(img_org, str(i), tuple(p), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv2.LINE_AA)
 
 #     ax1 = fig.add_subplot(221)
-#     ax2.set_title("Original image with bounding box + key points")
+#     ax1.set_title("Original image with bounding box + key points")
 #     ax1.xaxis.tick_top()
 #     ax1.imshow(img_org)
     
-#     ax2 = fig.add_subplot(222)
-#     ax2.set_title("Final cropped img")
-#     ax2.xaxis.tick_top()
-#     ax2.imshow(crop)
+#     ax1 = fig.add_subplot(222)
+#     ax1.set_title("Final cropped img")
+#     ax1.xaxis.tick_top()
+#     ax1.imshow(crop)
 #     break
 
     # resize and save image
     resized_img = cv2.resize(crop, (256,256))
     img_out = cv2.cvtColor(resized_img, cv2.COLOR_RGB2BGR)
-    img_output_path = image_output_dir + img_name
+    img_output_path = str(image_output_dir / img_name)
     cv2.imwrite(img_output_path, img_out)
 
     # bring image to same size
