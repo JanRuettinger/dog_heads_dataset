@@ -3,10 +3,10 @@ The dataset consits of ~22k images of predominately front facing dog heads with 
 
 ## How can I use the dataset?
 1. Download the Tsinghua Dog Dataset [here](https://cg.cs.tsinghua.edu.cn/ThuDogs/).
-2. Run the preprocessing steps 1-3 (either python scripts or jupyter notebooks).
-
-### Install libs for preprocessing
-`pip install -r requirements.txt`
+2. Install libs for preprocessing: `pip install -r requirements.txt`
+3. Switch to scripts folder: `cd scripts`
+4. Run preprocessing steps 1-3: `python step_1.py` etc.
+5. Alternatively you can start a jupyter notebook and run the provided notebooks: `jupyter-lab`.
 
 
 ### Preprocessing details
